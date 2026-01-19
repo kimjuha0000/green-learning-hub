@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Speak.com inspired soft, friendly palette */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 20%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 20%;
+    
+    /* Primary - Warm coral/orange inspired by Speak */
+    --primary: 16 90% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Soft lavender */
+    --secondary: 250 30% 96%;
+    --secondary-foreground: 220 20% 30%;
+    
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 50%;
+    
+    /* Accent - Soft mint */
+    --accent: 165 50% 95%;
+    --accent-foreground: 165 50% 30%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Success - Friendly green */
+    --success: 145 60% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Warning - Soft yellow */
+    --warning: 45 90% 55%;
+    --warning-foreground: 45 90% 20%;
+    
+    --border: 220 15% 92%;
+    --input: 220 15% 92%;
+    --ring: 16 90% 55%;
+    
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 220 10% 95%;
+    
+    --card: 220 20% 14%;
+    --card-foreground: 220 10% 95%;
+    
+    --popover: 220 20% 14%;
+    --popover-foreground: 220 10% 95%;
+    
+    --primary: 16 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 220 10% 90%;
+    
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+    
+    --accent: 165 40% 20%;
+    --accent-foreground: 165 50% 80%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 145 50% 40%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 45 80% 50%;
+    --warning-foreground: 45 90% 10%;
+    
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 16 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Speak.com inspired button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold 
+           rounded-2xl px-8 py-4 
+           shadow-button hover:shadow-button-hover
+           transition-all duration-300 ease-out
+           hover:scale-[1.02] hover:-translate-y-0.5
+           active:scale-[0.98] active:translate-y-0
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-medium 
+           rounded-2xl px-6 py-3 
+           border border-border
+           transition-all duration-300 ease-out
+           hover:bg-muted hover:scale-[1.02]
+           active:scale-[0.98];
+  }
+
+  /* Card styles */
+  .card-interactive {
+    @apply bg-card rounded-3xl p-6 
+           shadow-card hover:shadow-card-hover
+           transition-all duration-300 ease-out
+           hover:scale-[1.01] hover:-translate-y-1;
+  }
+
+  /* Day card specific styles */
+  .day-card {
+    @apply relative overflow-hidden rounded-3xl p-6 
+           transition-all duration-300 ease-out;
+  }
+
+  .day-card-available {
+    @apply bg-card shadow-card cursor-pointer
+           hover:shadow-card-hover hover:scale-[1.02] hover:-translate-y-1;
+  }
+
+  .day-card-completed {
+    @apply bg-success/10 border-2 border-success/30;
+  }
+
+  .day-card-locked {
+    @apply bg-muted/50 opacity-60 cursor-not-allowed;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 rounded-full bg-muted overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full rounded-full bg-primary transition-all duration-500 ease-out;
+  }
+
+  /* Video player container */
+  .video-container {
+    @apply relative w-full aspect-video rounded-3xl overflow-hidden 
+           bg-foreground/5 shadow-soft-xl;
+  }
+
+  /* Action section */
+  .action-section {
+    @apply bg-accent/50 rounded-3xl p-6 border border-accent;
+  }
+
+  /* Celebration overlay */
+  .celebration-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center 
+           bg-background/80 backdrop-blur-sm;
+  }
+}
+
+@layer utilities {
+  /* Smooth fade transitions */
+  .fade-enter {
+    @apply opacity-0 translate-y-4;
+  }
+  
+  .fade-enter-active {
+    @apply opacity-100 translate-y-0 transition-all duration-500 ease-out;
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-lg;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-warning bg-clip-text text-transparent;
+  }
+}
